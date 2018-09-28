@@ -145,7 +145,7 @@ layer { name: "score-dsn2" type: "Convolution" bottom: "score_fuse2" top: "score
 layer { name: "upsample_2" type: "Deconvolution" bottom: "score-dsn2" top: "score-dsn2-up"
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0 }
   convolution_param { kernel_size: 4 stride: 2 num_output: 1 } }
-layer { name: "crop2" type: "AutoCrop" bottom: "score-dsn2-up" bottom: "data" top: "upscore-dsn2" }
+layer { name: "crop2" type: "Crop" bottom: "score-dsn2-up" bottom: "data" top: "upscore-dsn2" }
 layer { name: "dsn2_loss" type: "SigmoidCrossEntropyLoss" bottom: "upscore-dsn2"
   bottom: "label" top: "dsn2_loss" loss_weight: 1 }
 
@@ -168,7 +168,7 @@ layer { name: "score-dsn3" type: "Convolution" bottom: "score_fuse3" top: "score
 layer { name: "upsample_4" type: "Deconvolution" bottom: "score-dsn3" top: "score-dsn3-up"
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0 }
   convolution_param { kernel_size: 8 stride: 4 num_output: 1 } }
-layer { name: "crop3" type: "AutoCrop" bottom: "score-dsn3-up" bottom: "data" top: "upscore-dsn3" }
+layer { name: "crop3" type: "Crop" bottom: "score-dsn3-up" bottom: "data" top: "upscore-dsn3" }
 layer { name: "dsn3_loss" type: "SigmoidCrossEntropyLoss" bottom: "upscore-dsn3"
   bottom: "label" top: "dsn3_loss" loss_weight: 1 }
 
@@ -191,7 +191,7 @@ layer { name: "score-dsn4" type: "Convolution" bottom: "score_fuse4" top: "score
 layer { name: "upsample_8" type: "Deconvolution" bottom: "score-dsn4" top: "score-dsn4-up"
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0 }
   convolution_param { kernel_size: 16 stride: 8 num_output: 1 } }
-layer { name: "crop4" type: "AutoCrop" bottom: "score-dsn4-up" bottom: "data" top: "upscore-dsn4" }
+layer { name: "crop4" type: "Crop" bottom: "score-dsn4-up" bottom: "data" top: "upscore-dsn4" }
 layer { name: "dsn4_loss" type: "SigmoidCrossEntropyLoss" bottom: "upscore-dsn4"
   bottom: "label" top: "dsn4_loss" loss_weight: 1 }
 
@@ -214,7 +214,7 @@ layer { name: "score-dsn5" type: "Convolution" bottom: "score_fuse5" top: "score
 layer { name: "upsample_8_5" type: "Deconvolution" bottom: "score-dsn5" top: "score-dsn5-up"
   param { lr_mult: 0 decay_mult: 1 } param { lr_mult: 0 decay_mult: 0 }
   convolution_param { kernel_size: 16 stride: 8 num_output: 1 } }
-layer { name: "crop5" type: "AutoCrop" bottom: "score-dsn5-up" bottom: "data" top: "upscore-dsn5" }
+layer { name: "crop5" type: "Crop" bottom: "score-dsn5-up" bottom: "data" top: "upscore-dsn5" }
 layer { name: "dsn5_loss" type: "SigmoidCrossEntropyLoss" bottom: "upscore-dsn5"
   bottom: "label" top: "dsn5_loss" loss_weight: 1 }
 

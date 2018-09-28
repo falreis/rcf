@@ -82,7 +82,7 @@ layer { name: "score-dsn2" type: "Convolution" bottom: "score_fuse2" top: "score
   convolution_param { num_output: 1 kernel_size: 1 } }
 layer { name: "upsample_2" type: "Deconvolution" bottom: "score-dsn2" top: "score-dsn2-up"
   convolution_param { kernel_size: 4 stride: 2 num_output: 1 } }
-layer { name: "crop2" type: "AutoCrop" bottom: "score-dsn2-up" bottom: "data" top: "upscore-dsn2" }
+layer { name: "crop2" type: "Crop" bottom: "score-dsn2-up" bottom: "data" top: "upscore-dsn2" }
 layer { name: "sigmoid-dsn2" type: "Sigmoid" bottom: "upscore-dsn2" top: "sigmoid-dsn2"}
 
 ### conv3 ###
@@ -98,7 +98,7 @@ layer { name: "score-dsn3" type: "Convolution" bottom: "score_fuse3" top: "score
   convolution_param { num_output: 1 kernel_size: 1 } }
 layer { name: "upsample_4" type: "Deconvolution" bottom: "score-dsn3" top: "score-dsn3-up"
   convolution_param { kernel_size: 8 stride: 4 num_output: 1 } }
-layer { name: "crop3" type: "AutoCrop" bottom: "score-dsn3-up" bottom: "data" top: "upscore-dsn3" }
+layer { name: "crop3" type: "Crop" bottom: "score-dsn3-up" bottom: "data" top: "upscore-dsn3" }
 layer { name: "sigmoid-dsn3" type: "Sigmoid" bottom: "upscore-dsn3" top: "sigmoid-dsn3"}
 
 ### conv4 ###
@@ -114,7 +114,7 @@ layer { name: "score-dsn4" type: "Convolution" bottom: "score_fuse4" top: "score
   convolution_param { num_output: 1 kernel_size: 1 } }
 layer { name: "upsample_8" type: "Deconvolution" bottom: "score-dsn4" top: "score-dsn4-up"
   convolution_param { kernel_size: 16 stride: 8 num_output: 1 } }
-layer { name: "crop4" type: "AutoCrop" bottom: "score-dsn4-up" bottom: "data" top: "upscore-dsn4" }
+layer { name: "crop4" type: "Crop" bottom: "score-dsn4-up" bottom: "data" top: "upscore-dsn4" }
 layer { name: "sigmoid-dsn4" type: "Sigmoid" bottom: "upscore-dsn4" top: "sigmoid-dsn4"}
 
 ### conv5 ###
@@ -130,7 +130,7 @@ layer { name: "score-dsn5" type: "Convolution" bottom: "score_fuse5" top: "score
   convolution_param { num_output: 1 kernel_size: 1 } }
 layer { name: "upsample_8_5" type: "Deconvolution" bottom: "score-dsn5" top: "score-dsn5-up"
   convolution_param { kernel_size: 16 stride: 8 num_output: 1 } }
-layer { name: "crop5" type: "AutoCrop" bottom: "score-dsn5-up" bottom: "data" top: "upscore-dsn5" }
+layer { name: "crop5" type: "Crop" bottom: "score-dsn5-up" bottom: "data" top: "upscore-dsn5" }
 layer { name: "sigmoid-dsn5" type: "Sigmoid" bottom: "upscore-dsn5" top: "sigmoid-dsn5"}
 
 ### Concat and multiscale weight layer ###
